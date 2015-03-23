@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.grpc.transport.MessageDeframerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2015-03-23T00:36:34" hostname="ip-172-31-3-252" time="0.032">
+  <properties/>
+  <testcase name="emptyPayload" classname="io.grpc.transport.MessageDeframerTest" time="0.007"/>
+  <testcase name="payloadSplitBetweenBuffers" classname="io.grpc.transport.MessageDeframerTest" time="0.003"/>
+  <testcase name="compressed" classname="io.grpc.transport.MessageDeframerTest" time="0.004"/>
+  <testcase name="largerFrameSize" classname="io.grpc.transport.MessageDeframerTest" time="0.001"/>
+  <testcase name="endOfStreamShouldNotifyEndOfStream" classname="io.grpc.transport.MessageDeframerTest" time="0.001"/>
+  <testcase name="endOfStreamCallbackShouldWaitForMessageDelivery" classname="io.grpc.transport.MessageDeframerTest" time="0.004"/>
+  <testcase name="simplePayload" classname="io.grpc.transport.MessageDeframerTest" time="0.002"/>
+  <testcase name="frameHeaderSplitBetweenBuffers" classname="io.grpc.transport.MessageDeframerTest" time="0.001"/>
+  <testcase name="endOfStreamWithPayloadShouldNotifyEndOfStream" classname="io.grpc.transport.MessageDeframerTest" time="0.002"/>
+  <testcase name="smallCombinedPayloads" classname="io.grpc.transport.MessageDeframerTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

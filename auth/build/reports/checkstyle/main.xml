@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.2">
+<file name="/home/ubuntu/my-grpc/grpc-java/auth/src/main/java/io/grpc/auth/ClientAuthInterceptor.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/auth/src/test/java/io/grpc/auth/ClientAuthInterceptorTests.java">
+</file>
+</checkstyle>

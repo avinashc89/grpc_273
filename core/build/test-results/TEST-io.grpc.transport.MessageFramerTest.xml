@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.grpc.transport.MessageFramerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2015-03-23T00:36:34" hostname="ip-172-31-3-252" time="0.046">
+  <properties/>
+  <testcase name="flushIsIdempotent" classname="io.grpc.transport.MessageFramerTest" time="0.014"/>
+  <testcase name="closeCombinedWithFullSink" classname="io.grpc.transport.MessageFramerTest" time="0.001"/>
+  <testcase name="emptyPayloadYieldsFrame" classname="io.grpc.transport.MessageFramerTest" time="0.001"/>
+  <testcase name="closeWithoutBufferedFrameGivesEmptySink" classname="io.grpc.transport.MessageFramerTest" time="0.001"/>
+  <testcase name="payloadSplitBetweenSinks" classname="io.grpc.transport.MessageFramerTest" time="0.001"/>
+  <testcase name="smallPayloadsShouldBeCombined" classname="io.grpc.transport.MessageFramerTest" time="0.001"/>
+  <testcase name="compressed" classname="io.grpc.transport.MessageFramerTest" time="0.004"/>
+  <testcase name="largerFrameSize" classname="io.grpc.transport.MessageFramerTest" time="0.001"/>
+  <testcase name="frameHeaderSplitBetweenSinks" classname="io.grpc.transport.MessageFramerTest" time="0.001"/>
+  <testcase name="simplePayload" classname="io.grpc.transport.MessageFramerTest" time="0.01"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

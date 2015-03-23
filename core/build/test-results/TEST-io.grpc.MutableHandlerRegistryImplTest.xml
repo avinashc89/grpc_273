@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.grpc.MutableHandlerRegistryImplTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2015-03-23T00:36:33" hostname="ip-172-31-3-252" time="0.036">
+  <properties/>
+  <testcase name="removeAndLookup" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.004"/>
+  <testcase name="removeSameSucceeds" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.006"/>
+  <testcase name="simpleLookup" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.0"/>
+  <testcase name="removeMissingNameConflictFails" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.0"/>
+  <testcase name="replaceAndLookup" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.0"/>
+  <testcase name="multiServiceLookup" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.0"/>
+  <testcase name="doubleRemoveFails" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.0"/>
+  <testcase name="initialAddReturnsNull" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.001"/>
+  <testcase name="addReturnsPrevious" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.003"/>
+  <testcase name="removeMissingFails" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.0"/>
+  <testcase name="addAfterRemoveReturnsNull" classname="io.grpc.MutableHandlerRegistryImplTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

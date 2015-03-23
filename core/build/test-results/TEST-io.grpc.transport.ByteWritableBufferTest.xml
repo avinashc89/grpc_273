@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.grpc.transport.ByteWritableBufferTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-03-23T00:36:34" hostname="ip-172-31-3-252" time="0.014">
+  <properties/>
+  <testcase name="testWriteSrcIndexAndLengthExceedSrcLength" classname="io.grpc.transport.ByteWritableBufferTest" time="0.001"/>
+  <testcase name="testWritableAndReadableBytes" classname="io.grpc.transport.ByteWritableBufferTest" time="0.001"/>
+  <testcase name="testWriteNegativeLength" classname="io.grpc.transport.ByteWritableBufferTest" time="0.001"/>
+  <testcase name="testWriteSrcIndex" classname="io.grpc.transport.ByteWritableBufferTest" time="0.002"/>
+  <testcase name="testMultipleWrites" classname="io.grpc.transport.ByteWritableBufferTest" time="0.001"/>
+  <testcase name="testWriteSrcIndexAndLengthExceedWritableBytes" classname="io.grpc.transport.ByteWritableBufferTest" time="0.001"/>
+  <testcase name="testWriteNegativeSrcIndex" classname="io.grpc.transport.ByteWritableBufferTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

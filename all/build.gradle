@@ -1,0 +1,22 @@
+description = "gRPC: All"
+
+// Make sure that no transitive dependencies are included.
+configurations.compile.transitive = false
+
+dependencies {
+    compile project(':grpc-core'),
+            project(':grpc-stub'),
+            project(':grpc-auth'),
+            project(':grpc-netty'),
+            project(':grpc-okhttp')
+}
+
+// Create a fat jar containing only the direct dependencies
+jar {
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+}
+

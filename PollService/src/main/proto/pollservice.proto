@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package edu.sjsu.cmpe273.lab2;
+
+option java_multiple_files = true;
+option java_package = "edu.sjsu.cmpe273.lab2";
+option java_outer_classname = "PollServiceProto";
+
+// The poll service definition.
+service PollService {
+    // creates a poll
+    rpc CreatePoll (PollRequest) returns (PollResponse) {}
+}
+
+message PollRequest {
+    string moderatorId = 1;
+    string question = 2;
+    string startedAt = 3;
+    string expiredAt = 4;
+    repeated string choice = 5;
+}
+
+// The response message containing the new poll id
+message PollResponse {
+    string id = 1;
+}

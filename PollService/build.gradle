@@ -1,0 +1,49 @@
+apply plugin: 'application'
+apply plugin: 'protobuf'
+
+description = "grpc Examples"
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath libraries.protobuf_plugin
+    }
+}
+
+dependencies {
+    compile project(':grpc-core'),
+            project(':grpc-netty'),
+            project(':grpc-okhttp'),
+            project(':grpc-stub'),
+            libraries.jsonp
+}
+
+protobufCodeGenPlugins = ["java_plugin:$javaPluginPath"]
+generateProto.dependsOn ':grpc-compiler:java_pluginExecutable'
+
+task pollServiceServer(type: JavaExec) {
+    main = "edu.sjsu.cmpe273.lab2.PollServiceServer"
+    description = "Executes the pollservice server."
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+task pollServiceClient(type: JavaExec) {
+    main = "edu.sjsu.cmpe273.lab2.PollServiceClient"
+    description = "Executes the pollservice client."
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+// Allow intellij projects to refer to generated-sources
+idea {
+    module {
+        // The whole build dir is excluded by default, but we need build/generated-sources,
+        // which contains the generated proto classes.
+        excludeDirs = [file('.gradle')]
+        if (buildDir.exists()) {
+            excludeDirs += files(buildDir.listFiles())
+            excludeDirs -= file("$buildDir/generated-sources")
+        }
+    }
+}

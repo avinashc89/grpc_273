@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.grpc.transport.CompositeReadableBufferTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2015-03-23T00:36:34" hostname="ip-172-31-3-252" time="0.033">
+  <properties/>
+  <testcase name="closeShouldCloseBuffers" classname="io.grpc.transport.CompositeReadableBufferTest" time="0.013"/>
+  <testcase name="readStreamShouldSucceed" classname="io.grpc.transport.CompositeReadableBufferTest" time="0.001"/>
+  <testcase name="readByteArrayShouldSucceed" classname="io.grpc.transport.CompositeReadableBufferTest" time="0.001"/>
+  <testcase name="readUnsignedByteShouldSucceed" classname="io.grpc.transport.CompositeReadableBufferTest" time="0.002"/>
+  <testcase name="singleBufferShouldSucceed" classname="io.grpc.transport.CompositeReadableBufferTest" time="0.001"/>
+  <testcase name="readByteBufferShouldSucceed" classname="io.grpc.transport.CompositeReadableBufferTest" time="0.001"/>
+  <testcase name="skipBytesShouldSucceed" classname="io.grpc.transport.CompositeReadableBufferTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

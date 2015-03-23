@@ -1,0 +1,173 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+subprojects {
+    apply plugin: "checkstyle"
+    apply plugin: "java"
+    apply plugin: "maven"
+    apply plugin: "idea"
+    apply plugin: "signing"
+
+    group = "io.grpc"
+    version = "0.1.0-SNAPSHOT"
+
+    sourceCompatibility = 1.6
+    targetCompatibility = 1.6
+
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+
+    [compileJava, compileTestJava].each() {
+        it.options.compilerArgs += ["-Xlint:unchecked", "-Xlint:deprecation", "-Xlint:-options"]
+        it.options.encoding = "UTF-8"
+    }
+
+    javadoc.options.encoding = "UTF-8"
+
+    ext {
+        libraries = [
+                guava: 'com.google.guava:guava:18.0',
+                // used to collect benchmark results
+                hdrhistogram: 'org.hdrhistogram:HdrHistogram:2.1.4',
+                hpack: 'com.twitter:hpack:0.10.1',
+                javaee_api: 'javax:javaee-api:7.0',
+                jsonp: 'org.glassfish:javax.json:1.0.4',
+                jsr305: 'com.google.code.findbugs:jsr305:3.0.0',
+                oauth_client: 'com.google.auth:google-auth-library-oauth2-http:0.1.0',
+                okhttp: 'com.squareup.okhttp:okhttp:2.2.0',
+                protobuf: 'com.google.protobuf:protobuf-java:3.0.0-alpha-2',
+                protobuf_nano: 'com.google.protobuf.nano:protobuf-javanano:3.0.0-alpha-2',
+                protobuf_plugin: 'ws.antonov.gradle.plugins:gradle-plugin-protobuf:0.9.1',
+
+                // TODO: Unreleased dependencies.
+                // These must already be installed in the local maven repository.
+                netty: 'io.netty:netty-codec-http2:4.1.0.Beta4',
+
+                // Test dependencies.
+                junit: 'junit:junit:4.11',
+                mockito: 'org.mockito:mockito-core:1.10.19'
+        ]
+
+        // Determine the correct version of Jetty ALPN boot to use based
+        // on the Java version.
+        def alpnboot_version = '8.1.2.v20141202'
+        if (JavaVersion.current().ordinal() < JavaVersion.VERSION_1_8.ordinal()) {
+            alpnboot_version = '7.1.2.v20141202'
+        }
+
+        alpnboot_package_name = 'org.mortbay.jetty.alpn:alpn-boot:' + alpnboot_version
+
+        def exeSuffix = Os.isFamily(Os.FAMILY_WINDOWS) ? ".exe" : ""
+        // The split is to workaround everything after the colon in C:\ being
+        // removed due to a bug in the protobuf plugin.
+        // https://github.com/aantono/gradle-plugin-protobuf/issues/23
+        def splitRootDir = rootDir
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+          splitRootDir = splitRootDir.getPath().split(":", 2)[1]
+        }
+        javaPluginPath = "$splitRootDir/compiler/build/binaries/java_pluginExecutable/java_plugin$exeSuffix"
+    }
+
+    dependencies {
+        testCompile libraries.junit,
+                    libraries.mockito
+    }
+
+    signing {
+        required false
+        sign configurations.archives
+    }
+
+    // Disable JavaDoc doclint on Java 8. It's annoying.
+    if (JavaVersion.current().isJava8Compatible()) {
+      allprojects {
+        tasks.withType(Javadoc) {
+          options.addStringOption('Xdoclint:none', '-quiet')
+        }
+      }
+    }
+
+    checkstyle {
+        configFile = file("$rootDir/checkstyle.xml")
+        toolVersion = "6.2"
+    }
+
+    checkstyleMain {
+        source = fileTree(dir: "src", include: "**/*.java",
+            excludes: ["${buildDir}/generated-sources", "**/TestServiceGrpc.java"])
+    }
+
+    checkstyleTest {
+        source = fileTree(dir: "test", include: "**/*.java",
+            exclude: "${buildDir}/generated-sources")
+    }
+
+    task javadocJar(type: Jar) {
+        classifier = 'javadoc'
+        from javadoc
+    }
+
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+
+    artifacts {
+        archives javadocJar, sourcesJar
+    }
+
+    uploadArchives.repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+            if (rootProject.hasProperty("ossrhUsername")
+                    && rootProject.hasProperty("ossrhPassword")) {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+        }
+
+        snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+            if (rootProject.hasProperty("ossrhUsername")
+                    && rootProject.hasProperty("ossrhPassword")) {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+        }
+    }
+
+    [
+      install.repositories.mavenInstaller,
+      uploadArchives.repositories.mavenDeployer,
+    ]*.pom*.whenConfigured { pom ->
+        pom.project {
+            name "$project.group:$project.name"
+            description project.description
+            url 'https://github.com/grpc/grpc-java'
+
+            scm {
+                connection 'scm:svn:https://github.com/grpc/grpc-java.git'
+                developerConnection 'scm:svn:git@github.com:grpc/grpc-java.git'
+                url 'https://github.com/grpc/grpc-java'
+            }
+
+            licenses {
+                license {
+                    name 'BSD 3-Clause'
+                    url 'http://opensource.org/licenses/BSD-3-Clause'
+                }
+            }
+
+            developers {
+                developer {
+                    id "grpc.io"
+                    name "gRPC Contributors"
+                    email "grpc-io@googlegroups.com"
+                    url "http://grpc.io/"
+                    // https://issues.gradle.org/browse/GRADLE-2719
+                    organization = "Google, Inc."
+                    organizationUrl "https://www.google.com"
+                }
+            }
+        }
+    }
+}

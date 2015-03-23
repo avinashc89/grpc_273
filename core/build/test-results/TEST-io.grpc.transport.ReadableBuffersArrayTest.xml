@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.grpc.transport.ReadableBuffersArrayTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2015-03-23T00:36:34" hostname="ip-172-31-3-252" time="0.041">
+  <properties/>
+  <testcase name="bufferShouldExposeArray" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.001"/>
+  <testcase name="partialReadToArrayShouldSucceed" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.0"/>
+  <testcase name="bufferShouldReadAllBytes" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.007"/>
+  <testcase name="partialReadToByteBufferShouldSucceed" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.001"/>
+  <testcase name="readToByteBufferShouldSucceed" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.004"/>
+  <testcase name="readToStreamShouldSucceed" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.003"/>
+  <testcase name="readToArrayShouldSucceed" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.004"/>
+  <testcase name="partialReadToStreamShouldSucceed" classname="io.grpc.transport.ReadableBuffersArrayTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

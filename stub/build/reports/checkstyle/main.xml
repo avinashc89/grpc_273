@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.2">
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/AbstractServiceDescriptor.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/AbstractStub.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/Calls.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/MetadataUtils.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/Method.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/ServerCalls.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/StreamObserver.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/main/java/io/grpc/stub/StreamRecorder.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/stub/src/test/java/io/grpc/stub/CallsTest.java">
+</file>
+</checkstyle>

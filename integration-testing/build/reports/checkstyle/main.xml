@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.2">
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/main/java/io/grpc/testing/integration/AbstractTransportTest.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/main/java/io/grpc/testing/integration/TestServiceClient.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/main/java/io/grpc/testing/integration/TestServiceImpl.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/main/java/io/grpc/testing/integration/TestServiceServer.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/main/java/io/grpc/testing/integration/Util.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/test/java/io/grpc/stub/StubConfigTest.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/test/java/io/grpc/testing/integration/Http2NettyLocalChannelTest.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/test/java/io/grpc/testing/integration/Http2NettyTest.java">
+</file>
+<file name="/home/ubuntu/my-grpc/grpc-java/integration-testing/src/test/java/io/grpc/testing/integration/Http2OkHttpTest.java">
+</file>
+</checkstyle>

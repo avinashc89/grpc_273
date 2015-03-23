@@ -1,0 +1,72 @@
+apply plugin: 'application'
+apply plugin: 'protobuf'
+
+description = "grpc Benchmarks"
+
+startScripts.enabled = false
+run.enabled = false
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath libraries.protobuf_plugin
+    }
+}
+
+configurations {
+    alpnboot
+}
+
+dependencies {
+    compile project(':grpc-core'),
+            project(':grpc-netty'),
+            project(':grpc-okhttp'),
+            project(':grpc-stub'),
+            project(':grpc-integration-testing'),
+            libraries.junit,
+            libraries.mockito,
+            libraries.hdrhistogram
+
+    alpnboot alpnboot_package_name
+}
+
+task qps_client(type: CreateStartScripts) {
+    mainClassName = "io.grpc.benchmarks.qps.QpsClient"
+    applicationName = "qps_client"
+    defaultJvmOpts = ["-Xbootclasspath/p:" + configurations.alpnboot.asPath]
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+task qps_server(type: CreateStartScripts) {
+    mainClassName = "io.grpc.benchmarks.qps.QpsServer"
+    applicationName = "qps_server"
+    defaultJvmOpts = ["-Xbootclasspath/p:" + configurations.alpnboot.asPath]
+    outputDir = new File(project.buildDir, 'tmp')
+    classpath = jar.outputs.files + project.configurations.runtime
+}
+
+applicationDistribution.into("bin") {
+    from(qps_client)
+    from(qps_server)
+    fileMode = 0755
+}
+
+protobufCodeGenPlugins = ["java_plugin:$javaPluginPath"]
+generateProto.dependsOn ':grpc-compiler:java_pluginExecutable'
+
+// Allow intellij projects to refer to generated-sources
+idea {
+    module {
+        // The whole build dir is excluded by default, but we need build/generated-sources,
+        // which contains the generated proto classes.
+        excludeDirs = [file('.gradle')]
+        if (buildDir.exists()) {
+            excludeDirs += files(buildDir.listFiles())
+            excludeDirs -= file("$buildDir/generated-sources")
+        }
+    }
+}
+

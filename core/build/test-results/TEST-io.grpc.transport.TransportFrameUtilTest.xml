@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.grpc.transport.TransportFrameUtilTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2015-03-23T00:36:34" hostname="ip-172-31-3-252" time="0.046">
+  <properties/>
+  <testcase name="testToHttp2Headers" classname="io.grpc.transport.TransportFrameUtilTest" time="0.041"/>
+  <testcase name="testToAndFromHttp2Headers" classname="io.grpc.transport.TransportFrameUtilTest" time="0.003"/>
+  <testcase name="binaryHeaderWithoutSuffix" classname="io.grpc.transport.TransportFrameUtilTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Mar 23, 2015 12:36:34 AM io.grpc.transport.TransportFrameUtil toHttp2Headers
+WARNING: Metadata key=string, value=[1, 2, 3] contains invalid ASCII characters
+Mar 23, 2015 12:36:34 AM io.grpc.transport.TransportFrameUtil toHttp2Headers
+WARNING: Metadata key=string, value=[1, 2, 3] contains invalid ASCII characters
+]]></system-err>
+</testsuite>
